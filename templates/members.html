@@ -1,10 +1,44 @@
-{%extends "home-base.html"%}
+{% extends "home-base.html" %}
 
-{%block title%}
-About
+{% block head %}
+{{super()}}
+<style>
+  h1 {
+    color:green;
+  }
+</style>
 {% endblock %}
-<!--<h1>About<i aria-hidden="true"></i></h1>-->
-<h1 class="mt-5"><i class="fa fa-address-card-o" aria-hidden="true"></i> About Me</h1>
-<p>I am currently a first semester junior enrolled at the University of Delaware with an Accounting/MIS double major. I've done work with the University of Delware's Sports Marketing Student Team, having experience in running in-game promotions and helping fans with any needs or concerns they had. I am also a member of the professional
-business fraternity DSP, which is involved in many events on campus that help promote the study of business. </p>
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block active_tab %}
+<li class="nav-item">
+  <a class="nav-link" href="/">Home</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="/about">Members</a>
+</li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1 class="mt-5">Members</h1>
+        <p>These are our members</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#developer').tooltip()
+  });
+  </script>
 {% endblock %}

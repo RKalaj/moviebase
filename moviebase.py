@@ -7,7 +7,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/members')
+@app.route('/about')
 def members():
     # return '<h1>hello world!</h1>'
     return render_template('members.html')
