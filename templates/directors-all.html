@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-Movies
+Directors
 {% endblock %}
 
 {% block active_tab %}
@@ -32,9 +32,9 @@ Movies
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="mt-5">Directors</h1><br>
+      <h1 class="mt-5"><i class="fa fa-video-camera" aria-hidden="true"></i> Directors</h1><br>
         <div class="row bottom-margin">
-          <a href="/artist/add" class="btn btn-primary" role="button" aria-disabled="true">Add Directors</a>
+          <a href="/directors/add" class="btn btn-primary" role="button" aria-disabled="true">Add Directors</a>
         </div><br>
         {% if director %}
           <table class="table">

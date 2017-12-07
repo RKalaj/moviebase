@@ -1,0 +1,84 @@
+{% extends "home-base.html" %}
+
+{% block head %}
+{{super()}}
+<style>
+  h1 {
+    color:green;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+Add Movies
+{% endblock %}
+
+{% block active_tab %}
+<li class="nav-item">
+  <a class="nav-link" href="/">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about">Members</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="/movies">Movies</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/directors">Directors</a>
+</li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="mt-5"><i class="fa fa-film" aria-hidden="true"></i> Movies</h1><br>
+      <form action="/movies/add" method="post">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" name="name" placeholder="Name of the Movie" required="true">
+        </div>
+        <div class="form-group">
+          <label>Year</label>
+          <select class="form-control" name="year">
+            {% for i in range(1950, 2025) %}
+              {% if i == 2017 %}
+                <option selected="selected">{{i}}</option>
+              {% else %}
+                <option>{{i}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Director</label>
+          <select class="form-control" name="director">
+            {% for director in director %}
+                <option>{{director.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          Director not in the list? <a href="/directors/add" class="btn btn-success" role="button" aria-disabled="true">Add Director</a>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" name="about" placeholder="Description" required="true"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#developer').tooltip()
+  });
+  </script>
+{% endblock %}

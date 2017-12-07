@@ -47,10 +47,46 @@ def show_all_directors():
     return render_template('directors-all.html', director=director)
 
 
+@app.route('/directors/add', methods=['GET', 'POST'])
+def add_directors():
+    if request.method == 'GET':
+        return render_template('directors-add.html')
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        about = request.form['about']
+
+        # insert the data into the database
+        director = Director(name=name, about=about)
+        db.session.add(director)
+        db.session.commit()
+        return redirect(url_for('show_all_directors'))
+
+
 @app.route('/movies')
 def show_all_movies():
     movie = Movie.query.all()
     return render_template('movies-all.html', movie=movie)
+
+
+@app.route('/movies/add', methods=['GET', 'POST'])
+def add_movies():
+    if request.method == 'GET':
+        director = Director.query.all()
+        return render_template('movies-add.html', director=director)
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        year = request.form['year']
+        about = request.form['about']
+        director_name = request.form['director']
+        director = Director.query.filter_by(name=director_name).first()
+        movie = Movie(name=name, year=year, about=about, director=director)
+
+        # insert the data into the database
+        db.session.add(movie)
+        db.session.commit()
+        return redirect(url_for('show_all_movies'))
 
 
 if __name__ == '__main__':
