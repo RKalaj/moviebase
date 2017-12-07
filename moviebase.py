@@ -25,6 +25,7 @@ class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256))
     year = db.Column(db.Integer)
+    about = db.Column(db.Text)
     director_id = db.Column(db.Integer, db.ForeignKey('director.id'))
 
 
@@ -43,7 +44,13 @@ def members():
 @app.route('/directors')
 def show_all_directors():
     director = Director.query.all()
-    return render_template('director-all.html', director=director)
+    return render_template('directors-all.html', director=director)
+
+
+@app.route('/movies')
+def show_all_movies():
+    movie = Movie.query.all()
+    return render_template('movies-all.html', movie=movie)
 
 
 if __name__ == '__main__':

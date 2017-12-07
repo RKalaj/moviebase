@@ -1,0 +1,77 @@
+{% extends "home-base.html" %}
+
+{% block head %}
+{{super()}}
+<style>
+  h1 {
+    color:green;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+{% block active_tab %}
+<li class="nav-item">
+  <a class="nav-link" href="/">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about">Members</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/movies">Movies</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="/directors">Directors</a>
+</li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="mt-5">Directors</h1><br>
+        <div class="row bottom-margin">
+          <a href="/artist/add" class="btn btn-primary" role="button" aria-disabled="true">Add Directors</a>
+        </div><br>
+        {% if director %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>About</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for director in director %}
+              <tr>
+                  <th scope="row">{{director.id}}</th>
+                  <td>{{director.name}}</td>
+                  <td>{{director.about}}</td>
+                  <td>
+                    <a href="/directors/edit/{{director.id}}" class="btn btn-success" role="button">Edit</a>
+                    <a href="/directors/delete/{{director.id}}" class="btn btn-danger" role="button">Delete</a>
+                  </td>
+              </tr>
+              {% endfor%}
+            </tbody>
+          </table>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#developer').tooltip()
+  });
+  </script>
+{% endblock %}
