@@ -1,0 +1,68 @@
+{% extends "home-base.html" %}
+
+{% block head %}
+{{super()}}
+<style>
+  h1 {
+    color:green;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+Add Movies
+{% endblock %}
+
+{% block active_tab %}
+<li class="nav-item">
+  <a class="nav-link" href="/">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about">Members</a>
+</li>
+<li class="nav-item active">
+  <a class="nav-link" href="/movies">Movies</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/directors">Directors</a>
+</li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="mt-5"><i class="fa fa-film" aria-hidden="true"></i> Movies</h1><br>
+      <form action="/movies/delete/{{movie.id}}" method="post">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" name="name" value="{{movie.name}}" required="true" readonly="true">
+        </div>
+        <div class="form-group">
+          <label>Year</label>
+          <input class="form-control" type="text" name="year" value="{{movie.year}}" readonly="true">
+        </div>
+        <div class="form-group">
+          <label>Director</label>
+          <input class="form-control" type="text" name="director" value="{{movie.director.name}}" readonly="true">
+        </div>
+        <div class="form-group">
+          <label>About</label>
+          <textarea class="form-control" name="about" required="true" readonly="true">{{movie.about}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-danger" id="delete_btn">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#developer').tooltip()
+  });
+  </script>
+{% endblock %}
