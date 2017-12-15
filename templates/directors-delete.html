@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-Edit Directors
+Delete Directors
 {% endblock %}
 
 {% block active_tab %}
@@ -32,7 +32,7 @@ Edit Directors
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="mt-5"><i class="fa fa-video-camera" aria-hidden="true"></i> Directors</h1><br>
+      <h1 class="mt-5"><i class="fa fa-video-camera" aria-hidden="true"></i> Delete Director</h1><br>
       <form action="/directors/delete/{{director.id}}" method="post">
         <div class="form-group">
           <label>Name</label>
