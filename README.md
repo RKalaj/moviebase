@@ -2,9 +2,9 @@
 # Moviebase:
 
 
-* Our team project will consist of a movie database that will provide the user with information about certain movies.
+* Our team project consists of a movie database that will provide the user with information about certain movies.
 
-* The database will consist of multiple tables with some containing multiple columns.
+* The database consists of multiple tables with some containing multiple columns.
 
 # Tables:
   * movies
